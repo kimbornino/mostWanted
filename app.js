@@ -65,7 +65,7 @@ function searchByWeight(people) {
     if(el.weight == userInputWeight) {
       return true;
     }
-    // return true if el.height matches userInputHeight
+    // return true if el.height matches userInputWeight
   });
 
   return newArray;
@@ -91,7 +91,7 @@ function searchByEyeColor(people) {
     if(el.eyeColor == userInputEyeColor) {
       return true;
     }
-    // return true if el.height matches userInputHeight
+    // return true if el.height matches userInputEyeColor
   });
 
   return newArray;
@@ -104,7 +104,7 @@ function searchByGender(people) {
     if(el.gender == userInputGender) {
       return true;
     }
-    // return true if el.height matches userInputHeight
+    // return true if el.height matches userInputGender
   });
 
   return newArray;
@@ -117,7 +117,7 @@ function searchByOccupation(people) {
     if(el.occupation == userInputOccupation) {
       return true;
     }
-    // return true if el.height matches userInputHeight
+    // return true if el.height matches userInputOccupation
   });
 
   return newArray;
@@ -137,6 +137,7 @@ function mainMenu(person, people){
   switch(displayOption){
     case "info":
     // TODO: get person's info
+    displayPerson(person);
     break;
     case "family":
     // TODO: get person's family
@@ -184,6 +185,14 @@ function displayPerson(person){
   // height, weight, age, name, occupation, eye color.
   var personInfo = "First Name: " + person.firstName + "\n";
   personInfo += "Last Name: " + person.lastName + "\n";
+  personInfo += "gender: " + person.gender + "\n";
+  personInfo += "dob: " + person.dob + "\n";
+  personInfo += "height: " + person.height + "\n";
+  personInfo += "weight: " + person.weight + "\n";
+  personInfo += "eye color: " + person.eyeColor + "\n";
+  personInfo += "occupation: " + person.occupation + "\n";
+  personInfo += "parents: " + person.parents + "\n";
+  personInfo += "current spouse: " + person.currentSpouse + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
 }
