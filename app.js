@@ -37,13 +37,14 @@ function searchByTraits(people) {
       filteredPeople = searchByEyeColor(people);
       break;
     case "gender":
-      filterPeople = searchByGender(people);
+      filteredPeople = searchByGender(people);
       break;
     case "age":
-      filterPeople = searchByAge(people);
+      filteredPeople = searchByAge(people);
       break;
     case "occupation":
-      filterPeople = searchByOccupation(people);
+      filteredPeople = searchByOccupation(people);
+      break;
     // so on and so forth
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -62,6 +63,58 @@ function searchByWeight(people) {
 
   let newArray = people.filter(function (el) {
     if(el.weight == userInputWeight) {
+      return true;
+    }
+    // return true if el.height matches userInputHeight
+  });
+
+  return newArray;
+}
+
+function searchByHeight(people) {
+  let userInputHeight = prompt("How tall, in inches, is the person?");
+
+  let newArray = people.filter(function (el) {
+    if(el.height == userInputHeight) {
+      return true;
+    }
+    // return true if el.height matches userInputHeight
+  });
+
+  return newArray;
+}
+
+function searchByEyeColor(people) {
+  let userInputEyeColor = prompt("What color are the person's eyes?");
+
+  let newArray = people.filter(function (el) {
+    if(el.eyeColor == userInputEyeColor) {
+      return true;
+    }
+    // return true if el.height matches userInputHeight
+  });
+
+  return newArray;
+}
+
+function searchByGender(people) {
+  let userInputGender = prompt("What gender is the person?");
+
+  let newArray = people.filter(function (el) {
+    if(el.gender == userInputGender) {
+      return true;
+    }
+    // return true if el.height matches userInputHeight
+  });
+
+  return newArray;
+}
+
+function searchByOccupation(people) {
+  let userInputOccupation = prompt("How much does the person weigh?");
+
+  let newArray = people.filter(function (el) {
+    if(el.occupation == userInputOccupation) {
       return true;
     }
     // return true if el.height matches userInputHeight
