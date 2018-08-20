@@ -52,10 +52,19 @@ function searchByTraits(people) {
       break;
   }
 
-  let foundPerson = filteredPeople[0];
+  // let foundPerson = filteredPeople[0];
 
-  mainMenu(foundPerson, people);
-
+  for(i = 0; i < filteredPeople.length; i++)
+    if(filteredPeople == 0){
+      alert("no persons found");
+      app();
+    }
+    else if(filteredPeople.length > 1){
+      searchByTraits(filteredPeople);
+    }
+    else{
+      mainMenu(filteredPeople[0]);
+    }
 }
 
 function searchByWeight(people) {
@@ -111,7 +120,7 @@ function searchByGender(people) {
 }
 
 function searchByOccupation(people) {
-  let userInputOccupation = prompt("How much does the person weigh?");
+  let userInputOccupation = prompt("What is the persons occupation?");
 
   let newArray = people.filter(function (el) {
     if(el.occupation == userInputOccupation) {
@@ -161,7 +170,7 @@ function searchByName(people){
   var lastName = promptFor("What is the person's last name?", chars);
 
 
-    for (var i = 0; i< data.length; i ++) {
+    for (var i = 0; i < data.length; i ++) {
       if (data[i].firstName === firstName && data[i].lastName === lastName){
         return data[i];
 
@@ -187,11 +196,13 @@ function displayPerson(person){
   personInfo += "Last Name: " + person.lastName + "\n";
   personInfo += "gender: " + person.gender + "\n";
   personInfo += "dob: " + person.dob + "\n";
+  personInfo += "age: " + person.age + "\n";
   personInfo += "height: " + person.height + "\n";
   personInfo += "weight: " + person.weight + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "parents: " + person.parents + "\n";
+  personInfo += "children: " + person.children + "\n";
   personInfo += "current spouse: " + person.currentSpouse + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
