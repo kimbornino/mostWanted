@@ -8,14 +8,15 @@ function app(people){
   switch(searchType){
     case 'yes':
     // TODO: search by name
-    searchByName(people);
+    //searchByName(people);
+    mainMenu(searchByName(),people);
     break;
     case 'no':
     searchByTraits(people);
     break;
 
     default:
-    alert("Wrong! Please try again, following the instructions dummy. :)");
+    alert("Input not valid. Please try again.");
     app(people); // restart app
     break;
   }
@@ -78,7 +79,6 @@ function mainMenu(person, people){
     alert("Could not find that individual.");
     return app(people); // restart
   }
-
   var displayOption = prompt("Found " + person.firstName + " " + person.lastName + " . Do you want to know their 'info', 'family', or 'descendants'? Type the option you want or 'restart' or 'quit'");
 
   switch(displayOption){
@@ -98,8 +98,8 @@ function mainMenu(person, people){
     return; // stop execution
     default:
     return mainMenu(person, people); // ask again
+    }
   }
-}
 
 function searchByName(people){
 
