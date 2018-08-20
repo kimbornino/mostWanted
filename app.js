@@ -1,17 +1,19 @@
 /*
-Build all of your functions for displaying and gathering information below (GUI). 
+Build all of your functions for displaying and gathering information below (GUI).
 */
-//making a test change
+
 // app is the function called to start the entire application
 function app(people){
-  let searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
+  var searchType = promptFor("Do you know the name of the person you are looking for? Enter 'yes' or 'no'", yesNo).toLowerCase();
   switch(searchType){
     case 'yes':
     // TODO: search by name
+    searchByName(people);
     break;
     case 'no':
     searchByTraits(people);
     break;
+
     default:
     alert("Wrong! Please try again, following the instructions dummy. :)");
     app(people); // restart app
@@ -30,6 +32,17 @@ function searchByTraits(people) {
     case "weight":
       filteredPeople = searchByWeight(people);
       break;
+    case "eye color":
+      filteredPeople = searchByEyeColor(people);
+      break;
+    case "gender":
+      filterPeople = searchByGender(people);
+      break;
+    case "age": 
+      filterPeople = searchByAge(people);
+      break;
+    case "occupation":
+      filterPeople = searchByOccupation(people);
     // so on and so forth
     default:
       alert("You entered an invalid search type! Please try again.");
@@ -89,12 +102,24 @@ function mainMenu(person, people){
 }
 
 function searchByName(people){
+
   var firstName = promptFor("What is the person's first name?", chars);
   var lastName = promptFor("What is the person's last name?", chars);
 
+
+    for (var i = 0; i< data.length; i ++) {
+      if (data[i].firstName === firstName || data[i].lastName === lastName){
+
+     
+        console.log("hi");
+        
+      }
+    }
+  }
+
   // TODO: find the person using the name they entered
 
-}
+
 
 // alerts a list of people
 function displayPeople(people){
