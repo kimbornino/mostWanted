@@ -38,7 +38,7 @@ function searchByTraits(people) {
     case "gender":
       filterPeople = searchByGender(people);
       break;
-    case "age": 
+    case "age":
       filterPeople = searchByAge(people);
       break;
     case "occupation":
@@ -48,7 +48,7 @@ function searchByTraits(people) {
       alert("You entered an invalid search type! Please try again.");
       searchByTraits(people);
       break;
-  }  
+  }
 
   let foundPerson = filteredPeople[0];
 
@@ -109,10 +109,8 @@ function searchByName(people){
 
     for (var i = 0; i< data.length; i ++) {
       if (data[i].firstName === firstName || data[i].lastName === lastName){
+        return data[i];
 
-     
-        console.log("hi");
-        
       }
     }
   }
