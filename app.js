@@ -161,7 +161,7 @@ function searchByName(people){
 
 
     for (var i = 0; i< data.length; i ++) {
-      if (data[i].firstName === firstName || data[i].lastName === lastName){
+      if (data[i].firstName === firstName && data[i].lastName === lastName){
         return data[i];
 
       }
