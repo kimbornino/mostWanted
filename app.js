@@ -213,24 +213,30 @@ function searchByName(people){
   // TODO: find the person using the name they entered
 
   function getParents(person, data) {
-    for (let i=0;i< person.parents.length; i++) {
+    for (let i = 0; i < person.parents.length; i++) {
       familyArray.push(person.parents[i]);
     }
   }
     
-  function getSiblings(person) {
-    for(let i = 0; i > data.length; i ++) {
-      if(person.parents === data[i].parents){
-       return data[i];
+  function getSiblings(person) { //need to exclude .parents[] with no values
+    
+    // if(person.parents[0] === 0){
+      
+    // }
+    let siblingArray = [];
+    for(let i = 0; i < data.length; i ++) {
+      if(person.parents[0] === data[i].parents[0] && person.firstName !== data[i].firstName){
+       siblingArray.push(data[i]);
       }
-    }     
+    } 
+        return siblingArray;    
   }
     
     function getSpouse(person, data) {
       if(person.currentSpouse !== []){
         // let spouse = person.currentSpouse;
-        for(let i = 0; i > data.length; i++){
-          if(person.currentSpouse == data[i].id){
+        for(let i = 0; i < data.length; i++){
+          if(person.currentSpouse === data[i].id){
             return data[i];
           }
         }
