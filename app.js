@@ -132,6 +132,37 @@ function searchByOccupation(people) {
   return newArray;
 }
 
+function searchByAge(people) {
+  let userInputAge = prompt("How old is the person?");
+  let newArray = people.filter(function (el) {
+    let age = getAge(el.dob);
+    if(age == userInputAge) {
+      return true;
+    }
+  });
+  return newArray;
+  }
+  
+  function getAge(dateString) {
+    let dates = dateString.split("/");
+    let d = new Date();
+  
+    let userMonth = dates[0];
+    let userDay = dates[1];
+    let userYear = dates[2];
+  
+    let curMonth= d.getMonth()+1;
+    let curDay = d.getDate();
+    let curYear = d.getFullYear();
+  
+    let age = curYear - userYear;
+  
+    if((curMonth < userMonth) || ( (curMonth == userMonth) && curDay < userDay)){
+        age--;
+    }
+    return age;
+  }
+
 // Menu function to call once you find who you are looking for
 function mainMenu(person, people){
 
@@ -150,6 +181,7 @@ function mainMenu(person, people){
     break;
     case "family":
     // TODO: get person's family
+    getFamily(person);
     break;
     case "descendants":
     // TODO: get person's descendants
@@ -180,7 +212,46 @@ function searchByName(people){
 
   // TODO: find the person using the name they entered
 
+  function getParents(person, data) {
+    for (let i=0;i< person.parents.length; i++) {
+      familyArray.push(person.parents[i]);
+    }
+  }
+    
+  function getSiblings(person) {
+    for(let i = 0; i > data.length; i ++) {
+      if(person.parents === data[i].parents){
+       return data[i];
+      }
+    }     
+  }
+    
+    function getSpouse(person, data) {
+      if(person.currentSpouse !== []){
+        // let spouse = person.currentSpouse;
+        for(let i = 0; i > data.length; i++){
+          if(person.currentSpouse == data[i].id){
+            return data[i];
+          }
+        }
+      }
+    }
 
+    function getChildren(person) {
+      if(person.id === data[i].parents){
+        familyArray += data[i];
+        }    
+    }
+    
+    function getFamily(person){
+      let familyArray = [];
+      familyArray = familyArray.concat(getSpouse(person, data));
+      familyArray = familyArray.concat(getSiblings(person, data));
+      familyArray = familyArray.concat(getParents(person, data));
+      return familyArray; 
+    
+    }
+ 
 
 // alerts a list of people
 function displayPeople(people){
@@ -196,17 +267,17 @@ function displayPerson(person){
   personInfo += "Last Name: " + person.lastName + "\n";
   personInfo += "gender: " + person.gender + "\n";
   personInfo += "dob: " + person.dob + "\n";
-  personInfo += "age: " + person.age + "\n";
   personInfo += "height: " + person.height + "\n";
   personInfo += "weight: " + person.weight + "\n";
   personInfo += "eye color: " + person.eyeColor + "\n";
   personInfo += "occupation: " + person.occupation + "\n";
   personInfo += "parents: " + person.parents + "\n";
-  personInfo += "children: " + person.children + "\n";
   personInfo += "current spouse: " + person.currentSpouse + "\n";
   // TODO: finish getting the rest of the information to display
   alert(personInfo);
+  app();
 }
+
 
 // function that prompts and validates user input
 function promptFor(question, valid){
